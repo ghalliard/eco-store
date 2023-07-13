@@ -1,0 +1,385 @@
+$primary-color:#FFEFE7;
+$secundary-color:#FFDAC6;
+$tertiary-color:#BABD8D;
+$primary-text-color:#7C6A0A;
+$button-color: #FA9500;
+$font-stack: 'IBM Plex Sans' , sans-serif; 
+
+@mixin flexCenter($direction, $content, $align){
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin btn-style{
+    button{
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
+@mixin h2-title{
+    h2{
+        font-size: 22px;
+        font-weight: 500;
+        color: $primary-text-color;
+    }
+}
+@mixin parrafo($size, $color: null){
+    p{
+        font-size: $size;
+        color: $color;
+    }
+}
+@mixin icon($width, $height, $url){
+    width: $width;
+    height: $height;
+    background-image: url($url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+img{
+    width: 100%;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    color: $primary-text-color;
+    @include btn-style;
+    .logo{
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .buttons-container{
+        display: flex;
+        gap: 16px;
+    }
+}
+
+.healthcare{
+    margin-bottom: 28px;
+}
+
+.main-section{
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding: 0 24px;
+    article{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: $primary-text-color;
+        .image-container{
+            width: 100%;
+            max-width: 425px;
+            overflow: hidden;
+            background-image: url('../assets/img/main-2.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 362px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            order: 1;
+        }
+        .info-container{
+            display: flex;
+            max-width: 425px;
+            flex-direction: column;
+            gap: 20px;
+            order: 2;
+            h1{
+                font-size: 28px;
+                font-weight: 700;
+            }
+            p{
+                font-size: 12px;
+                font-weight: 500;
+            }
+            @include btn-style;
+            button{
+                width: fit-content;
+                align-self: center;
+                padding: 12px 24px;
+                background-color: $button-color;
+                border-radius: 20px;
+                color: white;
+                font-size: 14px;
+                font-weight: 700px;
+            }
+        }
+    }
+
+
+}
+
+.product-section{
+    @include h2-title;
+}
+
+.card-section{
+    display: flex;
+    margin-top: 28px;
+    gap: 28px;
+    overflow: auto;
+}
+
+.product-card{
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 8px;
+    width: 178px;
+    padding: 28px 22px;
+    border-radius: 8px;
+    color: $primary-text-color;
+    background-color: $secundary-color;
+    @include btn-style;
+    .icon{
+        transform: translateX(16px);
+    }
+    .image-container{
+        width: 100%;
+        height: 164px;
+        border-radius: 4px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .description{
+        h3{
+            font-size: 14px;
+            font-weight: 700;
+        }
+        p{
+            font-size: 12px;
+        }
+    }
+    
+}
+
+.furniture-product-card{
+    @extend .product-card;
+    background-color: $tertiary-color;
+    color: white;
+    .icon{
+        svg{
+            path{
+                stroke: white;
+            }
+        }
+    }
+    .furniture-description{
+        @extend .description;
+    }
+}
+
+.info-section{
+    @include h2-title;
+}
+
+.about-us{
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.earth-box{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    margin-bottom: 40px;
+    @include parrafo(12px, $button-color);
+    .earth-image{
+        width: 74px;
+        height: 74px;
+        margin: 0 auto;
+        background-image: url('../assets/img/earth.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+.innovation-box{
+    @extend .earth-box;
+    margin: 0;
+    .innovation-image{
+        @extend .earth-image;
+        background-image: url('../assets/img/ecology.png');
+    }
+}
+
+.gallery-section{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+    @include h2-title;
+    .gallery-img-container{
+        padding: 0 24px;
+        .img-container-1{
+            width: 100%;
+            max-width: 329px;
+            border-radius: 12px;
+            height: 298px;
+            margin-bottom: 40px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('../assets/img/gallery-2.jpg');
+        }
+        .img-container-2{
+            @extend .img-container-1;
+            background-image: url('../assets/img/gallery-1.jpg');
+        }
+        .img-container-3{
+            margin: 0;
+            @extend .img-container-1;
+            background-image: url('../assets/img/gallery-3.jpg');
+        }
+    }
+}
+
+.location{
+    @include h2-title;
+    color: $button-color;
+    h2{
+        color: $button-color;
+        font-weight: normal;
+        margin-bottom: 40px;
+    }
+    .map-container{
+        padding: 0 24px;
+        h2{
+            margin-bottom: 16px;
+        }
+    }
+    .img-container{
+        height: 480px;
+        margin-bottom: 36px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('../assets/img/map.png');
+    }
+}
+
+.footer{
+    $background: #fa9500;
+    background-color: $background;
+    padding: 24px;
+    margin-top: 40px;
+    @include h2-title;
+    h2{
+        color: white;
+        padding-bottom: 16px;
+    }
+    .social-media{
+        display: flex;
+        gap: 16px;
+        .instagram-logo{
+            @include icon(24px, 24px, '../assets/img/instagram-logo.png');
+        }
+        .facebook-logo{
+            @include icon(24px, 24px, '../assets/img/facebook-logo.png');
+        }
+        .twitter-logo{
+            @include icon(24px, 24px, '../assets/img/twitter-logo.png')
+        }
+    }
+}
+
+//media queries
+@media (min-width: 425px) {
+    .about-us{
+        .row2{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+    .gallery-section{
+        .gallery-img-container{
+            display: flex;
+            padding: 0;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            .img-container-1{
+                margin: 0;
+            }
+        }
+    }
+}
+@media (min-width: 768px){
+    .main-section{
+        article{
+            flex-direction: row;
+            justify-content: space-evenly;
+            gap: 80px;
+            padding: 0 20px;
+            .info-container{
+                padding-top: 40px;
+                align-self: flex-start;
+                max-width: 388px;
+                order: 1;
+                gap: 40px;
+                button{
+                    align-self: flex-start;
+                }
+            }
+            .image-container{
+                max-width: 550px;
+                order: 2;
+            }
+        }
+    }
+}
+@media (min-width: 1024px){
+    .main-section{
+        padding: 0 72px;
+        article{
+            justify-content: space-between;
+            padding: 0;
+            .info-container{
+                @include parrafo(24px);
+            }
+            .image-container{
+                height: 686px;
+            }
+        }
+    }
+    .card-section{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 324px);
+        justify-content: space-between; 
+        row-gap: 72px;
+        .product-card{
+            width: 100%;
+            padding: 16px 40px 48px 40px;
+            gap: 16px;
+            max-width: 324px;
+            height: 502px;
+            .image-container{
+                height: 100%;
+            }
+        }
+    }
+}
